@@ -66,7 +66,8 @@ def main():
     @client.event
     async def on_ready():
         keyword = "serveur"
-        ads = bot_hfr_scrap.get_ads(10, keyword)
+        deep = 10
+        ads = bot_hfr_scrap.get_ads(deep, keyword)
         new_ads = retrieve_new_ads(ads)
         if not new_ads:
             message="**Aucune nouvelle annonce !**"
