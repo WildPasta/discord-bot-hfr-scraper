@@ -1,6 +1,6 @@
 # Discord bot HFR scraper
 
-This Discord bot has been developed to search and display ads from harware.fr website on a Discord server.
+This Discord bot has been developed to search and display ads from [hardware.fr](https://forum.hardware.fr/hfr/AchatsVentes/Hardware/liste_sujet-1.htm) website on a Discord server.
 
 It uses web scraping to retrieve the ads and displays them in a user-friendly format.
 
