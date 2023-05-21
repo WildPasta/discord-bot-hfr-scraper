@@ -4,7 +4,7 @@ This Discord bot has been developed to search and display ads from [hardware.fr]
 
 It uses web scraping to retrieve the ads and displays them in a user-friendly format.
 
-An extra script is available to lookup for specific ads and send a notification on the Discord server when a new ad is found. It is recommended to use cron to run this script periodically.
+An extra script (new_alert.py) is available to lookup for specific ads and send a notification on the Discord server when a new ad is found. **It is recommended to use cron to run this script periodically.**
 
 ## Features
 
@@ -54,4 +54,6 @@ You can customize the bot by editing the following variables in the `.py` files:
 - deep: Number of pages to search for ads
 - keywords (in new_alert.py): keywords to search for
 
+## Todo
 
+- [] dockerfile
