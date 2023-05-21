@@ -76,14 +76,15 @@ def main():
 
     @bot.command(name="search")
     @commands.cooldown(1, 10, commands.BucketType.user)
-    async def search(ctx, keyword):
-        ads_dict = get_ads(deep, keyword)
+    async def search(ctx, *keywords):
+        search_query = " ".join(keywords)
+        ads_dict = get_ads(deep, search_query)
         
         # Check if no ad is found
         if len(ads_dict) == 0:
-            await ctx.send(f"No ad found containing the keyword '{keyword}'...")
+            await ctx.send(f"No ad found containing the keyword '{search_query}'...")
         else:
-            embed = discord.Embed(title=f"Search results for '{keyword}':", color=discord.Color.blue())
+            embed = discord.Embed(title=f"Search results for '{search_query}':", color=discord.Color.blue())
 
             count = 0
             for url, title in ads_dict.items():
