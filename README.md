@@ -56,4 +56,4 @@ You can customize the bot by editing the following variables in the `.py` files:
 
 ## Todo
 
-- [] dockerfile
+- [ ] dockerfile
