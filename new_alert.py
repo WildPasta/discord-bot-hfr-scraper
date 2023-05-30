@@ -59,6 +59,7 @@ async def send_message(client, message):
 def main():
     load_dotenv()
     DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+    ALERT_CHANNEL = os.getenv('ALERT_CHANNEL')
     
     intents = discord.Intents.all()
     client = discord.Client(intents=intents)
@@ -71,7 +72,7 @@ def main():
         new_ads = retrieve_new_ads(ads)
         if not new_ads:
             message="**Aucune nouvelle annonce !**"
-            channel = client.get_channel(1052934887100915763)
+            channel = client.get_channel(ALERT_CHANNEL)
             await channel.send(message)
         else:
             message = ""
