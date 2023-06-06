@@ -5,11 +5,11 @@ LABEL org.opencontainers.image.maintainer="Wildpasta <chauve.richard@protonmail.
 LABEL org.opencontainers.image.description="Docker container HFR scraping"
 LABEL org.opencontainers.image.source="https://github.com/WildPasta/discord_bot_hfr_scraper"
 
-ENV DIR=/home/bot_hfr/
-WORKDIR $DIR/bot_hfr
+ENV DIR=/home/bot/
+WORKDIR $DIR
 
-COPY bot $DIR/bot_hfr
+COPY bot $DIR
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "discord_bot_hfr_scraper.py"]
+CMD ["python", "bot_hfr_scraper.py"]
