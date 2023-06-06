@@ -54,7 +54,7 @@ def main():
     # Load the environment variables
     load_dotenv()
     DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
-    DEEP = os.getenv('DEEP')
+    DEEP = int(os.getenv('DEEP'))
 
     # If DEEP is not set, defaulting to 5 pages
     if not DEEP:
