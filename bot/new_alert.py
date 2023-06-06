@@ -11,7 +11,7 @@ import sys
 
 from dotenv import load_dotenv
 
-import bot_hfr_scrap
+import bot_hfr_scraper
 
 database = "hardware.db"
 
@@ -68,7 +68,7 @@ def main():
     async def on_ready():
         keyword = "serveur"
         deep = 10
-        ads = bot_hfr_scrap.get_ads(deep, keyword)
+        ads = bot_hfr_scraper.get_ads(deep, keyword)
         new_ads = retrieve_new_ads(ads)
         if not new_ads:
             message="**Aucune nouvelle annonce !**"
