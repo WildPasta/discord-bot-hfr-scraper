@@ -4,14 +4,15 @@
 # Purpose: web scraper to retrieve hardware available on HFR website
 """
 
-# Imports
-import discord
+# Python standard libraries
 import os
 import requests
 import sys
 
+# Third-party libraries
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
+import discord
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
 
@@ -22,7 +23,6 @@ def get_ads(deep, keyword):
     Keyword is the keyword to search for in the ads titles
     """
 
-    # Empty dictionary containing the URL as key and title as value
     ads_dict = {}
 
     # Scrap the number of pages given in arg
@@ -30,10 +30,10 @@ def get_ads(deep, keyword):
         url = f"https://forum.hardware.fr/hfr/AchatsVentes/Hardware/liste_sujet-{i}.htm"
         response = requests.get(url)
 
-        # Parse HTML using BeautifulSoup
+        # Parse HTML
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        # Retrieve the title and URL of the ads in the specified column
+        # Retrieve the title and URL of the ads
         ads = soup.find_all("td", {"class": "sujetCase3"})
 
         # Iterate through all of the ads
@@ -42,7 +42,7 @@ def get_ads(deep, keyword):
             cCatTopic = ad.find("a", {"class": "cCatTopic"})
 
             # Check if the cCatTopic element exists and its text contains the keyword
-            if cCatTopic and keyword.lower() in cCatTopic.text.lower() and "vds" in cCatTopic.text.lower():
+            if cCatTopic and keyword.lower() in cCatTopic.text.lower():
                 url = "https://forum.hardware.fr" + cCatTopic["href"]
                 # Check if the URL is unique in our dictionary
                 if url not in ads_dict:
@@ -54,9 +54,11 @@ def main():
     # Load the environment variables
     load_dotenv()
     DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+    DEEP = os.getenv('DEEP')
 
-    # Deep variable for the scraper
-    deep = 5
+    # If DEEP is not set, defaulting to 5 pages
+    if not DEEP:
+        DEEP = 5
 
     # Load the Discord intents
     intents = discord.Intents.all()
@@ -66,7 +68,7 @@ def main():
     # Print a message when bot is ready
     @bot.event
     async def on_ready():
-        print(f'The Discord_Bot is now ready!')   
+        print(f'The Discord_Bot is now ready!')
     
     @bot.event
     async def on_command_error(ctx, error):
@@ -78,7 +80,7 @@ def main():
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def search(ctx, *keywords):
         search_query = " ".join(keywords)
-        ads_dict = get_ads(deep, search_query)
+        ads_dict = get_ads(DEEP, search_query)
         
         # Check if no ad is found
         if len(ads_dict) == 0:
@@ -88,9 +90,7 @@ def main():
 
             count = 0
             for url, title in ads_dict.items():
-                # Add the title and URL to the embed
                 embed.add_field(name=title, value=url, inline=False)
-
                 count += 1
                 if count >= 10:
                     break
