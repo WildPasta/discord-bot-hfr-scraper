@@ -59,6 +59,9 @@ def main():
     # If DEEP is not set, defaulting to 5 pages
     if not DEEP:
         DEEP = 5
+    elif DEEP > 20:
+        print("DEEP cannot be greater than 20, defaulting to 20 pages")
+        DEEP = 20
 
     # Load the Discord intents
     intents = discord.Intents.all()
