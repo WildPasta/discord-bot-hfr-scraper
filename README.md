@@ -6,9 +6,9 @@ It uses web scraping to retrieve the ads and displays them in a user-friendly fo
 
 ## Features
 
-- Search for ads from a specific website using keywords
+- Search for ads from HFR forum using keywords with `!search keyword`
 - Display ads on the Discord server
-- Store ads in a database to avoid duplicates (alert script only)
+- Send message using the `new_alert.py` script daily to monitor specific
 
 An extra script (new_alert.py) is available to lookup for specific ads and send a notification on the Discord server when a new ad is found. **It is recommended to use cron to run this script periodically.**
 
