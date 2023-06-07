@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    bot_hfr_scraper:
+        environment:
+            - DEEP:<pages_to_scrape>
+            - DISCORD_TOKEN:<your_discord_token>
+        image: 'wildpasta/bot_hfr_scraper:1.0.0'
+        container_name: bot_hfr_scraper
+        restart: unless-stopped
