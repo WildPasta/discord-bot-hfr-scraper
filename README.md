@@ -31,7 +31,6 @@ python pip install -r requirements.txt
 ```
 DISCORD_TOKEN=<your_discord_token>
 DEEP=<number_of_pages_to_search>
-ALERT_CHANNEL=<channel_id>
 ```
 
 Replace `<your_discord_token>` with the access token of your Discord bot. 
@@ -39,9 +38,6 @@ You can obtain this token by creating a bot application on the [Discord Develope
 
 Replace `<number_of_pages_to_search>` with the number of pages you want the bot to search for ads. 
 *Note: Default value is 5.*
-
-Replace `<channel_id>` with the ID of the channel where you want the bot to send alerts. 
-You can obtain this ID by enabling the developer mode in Discord and right-clicking on the channel.
 
 ## Usage (CLI)
 
@@ -85,9 +81,16 @@ The bot responds to the following commands:
 
 - `!search` <keyword>: Search for ads containing the specified keyword
 
-## Customize
+## New alert script
 
-You can customize the bot by editing the following variables in the `.py` files:
+You can customize the `new_alert.py` by editing the following environment variables in the `.env`:
 
-- deep: Number of pages to search for ads
-- keywords (in new_alert.py): keywords to search for
+```
+ALERT_CHANNEL=<alert_channel_id>
+KEYWORD=<keyword>
+```
+
+Replace `<alert_channel_id>` with the ID of the channel where you want the bot to send alerts. 
+You can obtain this ID by enabling the developer mode in Discord and right-clicking on the channel.
+
+Replace `<keyword>` with the keyword you want the bot to search for.
