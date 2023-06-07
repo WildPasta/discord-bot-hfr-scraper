@@ -1,10 +1,9 @@
-version: '3'
-
+version: '3.3'
 services:
-  youtube_downloader:
-    image: wildpasta/bot_hfr_scraper:1.0.0
-    container_name: bot_hfr_scraper
-    restart: unless-stopped
-    environment:
-      - DEEP=5
-      - DISCORD_TOKEN=YOUR_DISCORD_TOKEN
+    bot_hfr_scraper:
+        environment:
+            - DEEP:<pages_to_scrape>
+            - DISCORD_TOKEN:<your_discord_token>
+        image: 'wildpasta/bot_hfr_scraper:1.0.0'
+        container_name: bot_hfr_scraper
+        restart: unless-stopped
