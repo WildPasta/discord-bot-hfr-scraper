@@ -4,13 +4,16 @@
 # Purpose: get update on HFR ads containing the keyword
 """
 
-import discord
+# Python standard libraries
 import os
-import sqlite3
 import sys
 
-from dotenv import load_dotenv
+# Third-party libraries
+import discord 
+from dotenv import load_dotenv  
+import sqlite3
 
+# Local modules
 import bot_hfr_scraper
 
 database = "hardware.db"
