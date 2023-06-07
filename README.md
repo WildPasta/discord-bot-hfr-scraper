@@ -4,13 +4,13 @@ This Discord bot has been developed to search and display ads from [hardware.fr]
 
 It uses web scraping to retrieve the ads and displays them in a user-friendly format.
 
-An extra script (new_alert.py) is available to lookup for specific ads and send a notification on the Discord server when a new ad is found. **It is recommended to use cron to run this script periodically.**
-
 ## Features
 
 - Search for ads from a specific website using keywords
 - Display ads on the Discord server
 - Store ads in a database to avoid duplicates (alert script only)
+
+An extra script (new_alert.py) is available to lookup for specific ads and send a notification on the Discord server when a new ad is found. **It is recommended to use cron to run this script periodically.**
 
 ## Installation (CLI)
 
@@ -34,11 +34,14 @@ DEEP=<number_of_pages_to_search>
 ALERT_CHANNEL=<channel_id>
 ```
 
-Replace `<your_discord_token>` with the access token of your Discord bot. You can obtain this token by creating a bot application on the [Discord Developer Portal](https://discord.com/developers/applications).
+Replace `<your_discord_token>` with the access token of your Discord bot. 
+You can obtain this token by creating a bot application on the [Discord Developer Portal](https://discord.com/developers/applications).
 
-Replace `<number_of_pages_to_search>` with the number of pages you want the bot to search for ads.
+Replace `<number_of_pages_to_search>` with the number of pages you want the bot to search for ads. 
+*Note: Default value is 5.*
 
-Replace `<channel_id>` with the ID of the channel where you want the bot to send alerts. You can obtain this ID by enabling the developer mode in Discord and right-clicking on the channel.
+Replace `<channel_id>` with the ID of the channel where you want the bot to send alerts. 
+You can obtain this ID by enabling the developer mode in Discord and right-clicking on the channel.
 
 ## Usage (CLI)
 
@@ -64,7 +67,14 @@ Build the docker image:
 docker build -t wildpasta/bot_hfr_scraper:1.0.0 .
 ```
 
-Run the docker container using the docker-compose.yml file:
+## Usage (Docker)
+
+You can run manually the docker using:
+```bash
+docker run -e DEEP="10" -e DISCORD_TOKEN="<your_discord_token>" wildpasta/bot_hfr_scraper:1.0.0
+```
+
+Or you can run the docker container using the docker-compose.yml file:
 ```bash
 docker-compose up -d
 ```
