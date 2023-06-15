@@ -85,7 +85,7 @@ def main():
     try:
         load_dotenv()
         DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
-        ALERT_CHANNEL = os.getenv('ALERT_CHANNEL')
+        ALERT_CHANNEL = int(os.getenv('ALERT_CHANNEL'))
         KEYWORD = os.getenv('KEYWORD')
         DEEP = int(os.getenv('DEEP', '5'))
         if DEEP > 20:
@@ -125,5 +125,6 @@ def main():
     except Exception as e:
         print(f"An error occurred in the main function: {e}")
         return 1
+    
 if __name__ == "__main__":
     sys.exit(main())
