@@ -1,0 +1,1 @@
+0 10 * * * /usr/bin/python3 /home/bot/new_alert.py
