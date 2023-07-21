@@ -118,10 +118,9 @@ def main():
                     sql_additem("serveur", title, url)
 
                 await send_message(client, message, ALERT_CHANNEL)
-
             await client.close()
-
         client.run(DISCORD_TOKEN)
+        
     except Exception as e:
         print(f"An error occurred in the main function: {e}")
         return 1
