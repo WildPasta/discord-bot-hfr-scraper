@@ -1,1 +1,1 @@
-* * * * * cd /home/bot && /usr/local/bin/python3 /home/bot/new_alert.py
+* * * * * cd /home/bot && /usr/local/bin/python /home/bot/new_alert.py
